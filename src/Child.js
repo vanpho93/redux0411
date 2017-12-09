@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Child extends Component {
     render() {
-        const { onAdd, onSub, onReset } = this.props;
         return (
             <div>
-                <button onClick={onAdd}>Add</button>
-                <button onClick={onSub}>Sub</button>
-                <button onClick={onReset}>Reset</button>
+                <button onClick={() => this.props.dispatch({ type: 'ADD' })}>
+                    Add
+                </button>
+                <button onClick={() => this.props.dispatch({ type: 'SUB' })}>
+                    Sub
+                </button>
+                <button onClick={() => this.props.dispatch({ type: 'RESET' })}>
+                    Reset
+                </button>
             </div>
         );
     }
 }
 
-export default Child;
+export default connect()(Child);
